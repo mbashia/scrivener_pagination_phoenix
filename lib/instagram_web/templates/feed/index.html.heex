@@ -1,0 +1,30 @@
+<h1>Listing Feeds</h1>
+  
+  <%= pagination_links @page, view_style: :foundation %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for feed <- @feeds do %>
+    <tr>
+      <td><%= feed.title %></td>
+      <td><%= feed.body %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.feed_path(@conn, :show, feed) %></span>
+        <span><%= link "Edit", to: Routes.feed_path(@conn, :edit, feed) %></span>
+        <span><%= link "Delete", to: Routes.feed_path(@conn, :delete, feed), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Feed", to: Routes.feed_path(@conn, :new) %></span>

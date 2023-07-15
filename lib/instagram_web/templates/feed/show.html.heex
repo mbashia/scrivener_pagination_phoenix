@@ -1,0 +1,20 @@
+<h1>Show Feed</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @feed.title %>
+  </li>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @feed.body %>
+  </li>
+
+</ul>
+<%= render "message.html", feed: @feed, changeset: @changeset, action: Routes.feed_feed_path(@conn, :add_message, @feed) %>
+
+
+<span><%= link "Edit", to: Routes.feed_path(@conn, :edit, @feed) %></span> |
+<span><%= link "Back", to: Routes.feed_path(@conn, :index) %></span>
